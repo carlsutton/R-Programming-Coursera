@@ -1,0 +1,12 @@
+a <- read.csv("001.csv", header = TRUE)
+ba <- read.csv("002.csv", header = TRUE)
+ca <- read.csv("003.csv", header = TRUE)
+da <- read.csv("004.csv", header = TRUE)
+ea <- read.csv("005.csv", header = TRUE)
+fa <- read.csv("006.csv", header = TRUE)
+ga <- read.csv("007.csv", header = TRUE)
+ha <- read.csv("008.csv", header = TRUE) 
+ia <- read.csv("009.csv", header = TRUE)
+
+id <- 1:9
+cmb < rbind(a,ba,ca,da,ea,fa,ga,ha,ia)
