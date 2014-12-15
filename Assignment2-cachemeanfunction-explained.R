@@ -10,3 +10,4 @@ cachemean <- function(x, ...) {   # the input x is an object created by makeVect
         m <- mean(data, ...)   # if m was NULL then we have to calculate the mean
         x$setmean(m)           # store the calculated mean value in x (see setmean() in makeVector
         m               # return the mean to the code that called this function
+#         
