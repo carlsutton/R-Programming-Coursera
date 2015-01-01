@@ -1,0 +1,49 @@
+outcome <- "heart attack"
+num <- 20
+if (num == "best")
+{
+        num <- 1
+}  
+data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+require(data.table)
+if(outcome !="heart attack" && outcome !="heart failure" && outcome !="pneumonia")
+{
+        stop("invalid outcome")
+}
+hosp <- data[,2]
+st <- data[,7]
+HALME <- as.numeric(data[,11])
+HFLME <- as.numeric(data[,17])
+PLME <- as.numeric(data[,23])
+
+#       just filing the data.table with phony rank numbers
+#        rowHA <- nrow(data)
+#       rankHA <- 1:rowHA
+#  read all heart attack data, including NA's, filling in vector for rankHA with phony numbers
+#  for some unknown reason, rankHA is filled with descending order, even though the 
+#  vector rankHA is in asscending order
+HA1 <- data.table(hosp,st,HALME)
+ha1 <- HA1[complete.cases(HA1),]
+setkey(ha1,HALME,hosp,st)
+head(ha1)
+rankha1 <- ha1$HALME
+rankha1 <- rank(rankha1, ties.method = "first")
+head(rankha1)
+tail(rankha1)
+
+HERE IS THE USELESS OUTPUT
+ head(ha1)
+                                       hosp st HALME
+1:                     NYU HOSPITALS CENTER NY  10.1
+2:                      DOYLESTOWN HOSPITAL PA  10.4
+3: AVERA HEART HOSPITAL OF SOUTH DAKOTA LLC SD  10.5
+4:        GLENDALE ADVENTIST MEDICAL CENTER CA  10.5
+5:                       WATERBURY HOSPITAL CT  10.6
+6:              MAIN LINE HOSPITAL LANKENAU PA  10.7
+> rankha1 <- ha1$HALME
+> rankha1 <- rank(rankha1, ties.method = "first")
+> head(rankha1)
+[1] 1 2 3 4 5 6
+> tail(rankha1)
+[1] 2715 2716 2717 2718 2719 2720
+> 

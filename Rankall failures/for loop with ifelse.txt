@@ -1,0 +1,43 @@
+outcome <- "heart attack"
+num <- 20
+if (num == "best")
+{
+        num <- 1
+}  
+data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+require(data.table)
+if(outcome !="heart attack" && outcome !="heart failure" && outcome !="pneumonia")
+{
+        stop("invalid outcome")
+}
+hosp <- data[,2]
+st <- data[,7]
+HALME <- as.numeric(data[,11])
+HFLME <- as.numeric(data[,17])
+PLME <- as.numeric(data[,23])
+
+#       just filing the data.table with phony rank numbers
+#        rowHA <- nrow(data)
+#       rankHA <- 1:rowHA
+#  read all heart attack data, including NA's, filling in vector for rankHA with phony numbers
+#  for some unknown reason, rankHA is filled with descending order, even though the 
+#  vector rankHA is in asscending order
+HA1 <- data.table(hosp,st,HALME)
+ha1 <- HA1[complete.cases(HA1),]
+a <- sort(ha1$HALME)
+b <- c(1:length(a))
+ha2 <- data.table(a,b)
+for (i in (b-1))
+        {
+        ha3 <- ha2[, ifelse(a[,i] == a[,i+1], b = i,b <- b+1, by = a]
+        }
+ ha3     
+ RESULT
+ +     ha3 <- ha2[, ifelse(a[,i] == a[,i+1], b = i,b <- b+1, by = a]
+Error: unexpected ']' in:
+"{
+    ha3 <- ha2[, ifelse(a[,i] == a[,i+1], b = i,b <- b+1, by = a]"
+> }
+Error: unexpected '}' in "}"
+> ha3     
+Error: object 'ha3' not found

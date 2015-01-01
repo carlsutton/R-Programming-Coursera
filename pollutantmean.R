@@ -22,9 +22,9 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
         sulfate_mean <- mean(sulfate_idna)
         nitrate_idna <- cmbfile$nitrate[!is.na(cmbfile$nitrate)] #remove nitrate NA's
         nitrate_mean <- mean(nitrate_idna)
-        means < c(sulfate_mean, nitrate_mean)
+        means <- nitrate_mean
 }
 id <- 23
 pollutant <- list("nitrate")
 directory <- "spectdata"       
-pollutantmean(directory,pollutant,id)
+means <- pollutantmean(directory,pollutant,id)
