@@ -1,0 +1,25 @@
+count <- 1
+m1 <- rep(c(1:200), 2)
+m2 <- rep(c(1:100), 4)
+rankm2 <- m2
+require(data.table)
+ha2 <- data.table(m1,m2)
+#  Note sort on m2 first, then m1
+setkey(ha2,m2,m1)
+b <- nrow(ha2)
+ha2
+for (i in (b-1))
+        {
+         if(ha2[i,2] == ha2[(i+1),2])
+                {
+                        rankm2[i] <- count
+                }
+                else
+                {
+                        count <- count + 1
+                        rankm2[i] <- count
+                }
+        }
+ha3 <- data.table(m2,rankm2)
+setkey(ha3,rankm2,m2)
+ha3
