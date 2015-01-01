@@ -33,7 +33,7 @@ for (i in (b-1))
         {
         ha3 <- ha2[, ifelse(a[,i] == a[,i+1], b = i,b <- b+1, by = a]
         }
-       
+ ha3     
         
 #       create data table for heart attack with NA's removed
         
